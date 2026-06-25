@@ -164,6 +164,7 @@
       text-transform: uppercase;
     }
 
+    /* ── BUTTON ── */
     .btn {
       display: flex;
       align-items: center;
@@ -197,6 +198,7 @@
 
     .btn-secondary:hover { background: rgba(52,211,153,.2); }
 
+    /* ── CONTACT STRIP ── */
     .contact-strip {
       text-align: center;
       padding: 40px 24px;
@@ -228,6 +230,7 @@
 
     .mail-link:hover { background: rgba(79,124,255,.18); }
 
+    /* ── FOOTER ── */
     footer {
       padding: 28px 24px;
       text-align: center;
@@ -263,13 +266,13 @@
       </div>
     </div>
     <div class="badge-row">
-      <span class="badge">Windows x64</span>
+      <span class="badge">Windows x86</span>
       <span class="badge">.NET 8</span>
       <span class="badge">WPF</span>
-      <span class="badge">~73 MB</span>
+      <span class="badge">~68 MB</span>
     </div>
 
-    <a class="btn btn-primary" href="https://github.com/epbepbepbepb/kitchenstoves/releases/download/PC/KitchenStovesWPF_win-x86.zip" download>
+    <a class="btn btn-primary" href="KitchenStovesWPF_win-x86.zip" download>
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Скачать для Windows (.zip)
     </a>
@@ -280,6 +283,7 @@
     </div>
   </div>
 
+  <!-- MOBILE -->
   <div class="card">
     <div class="card-icon mobile">📱</div>
     <div>
@@ -322,10 +326,8 @@
 </footer>
 
 <script>
-  const base = (location.href.endsWith('/') ? location.href : location.href.replace(/\/[^\/]*$/, '/'));
-
   new QRCode(document.getElementById('qr-desktop'), {
-    text: base + 'KitchenStovesWPF_win-x64.zip',
+    text: 'https://epbepbepbepb.github.io/kitchenstoves/KitchenStovesWPF_win-x86.zip',
     width: 148,
     height: 148,
     colorDark: '#000000',
@@ -334,7 +336,7 @@
   });
 
   new QRCode(document.getElementById('qr-mobile'), {
-    text: base + 'KitchenStoves.apk',
+    text: 'https://epbepbepbepb.github.io/kitchenstoves/app-debug.apk',
     width: 148,
     height: 148,
     colorDark: '#000000',
