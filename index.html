@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kitchen Stoves — Скачать</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0f1117;
+      --surface:  #181c26;
+      --border:   #252b3b;
+      --accent:   #4f7cff;
+      --accent2:  #a78bfa;
+      --text:     #e8ecf4;
+      --muted:    #7b8299;
+      --green:    #34d399;
+      --radius:   16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HERO ── */
+    header {
+      text-align: center;
+      padding: 72px 24px 56px;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, #1a2040 0%, transparent 70%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,124,255,.12);
+      border: 1px solid rgba(79,124,255,.25);
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #fff 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── CARDS ── */
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      border-color: rgba(79,124,255,.4);
+      box-shadow: 0 0 32px rgba(79,124,255,.08);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .card-icon.desktop { background: rgba(79,124,255,.15); }
+    .card-icon.mobile  { background: rgba(52,211,153,.12); }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -.015em;
+    }
+
+    .card-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    /* ── QR ── */
+    .qr-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qr-wrap {
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      width: fit-content;
+      line-height: 0;
+    }
+
+    .qr-label {
+      font-size: .75rem;
+      color: var(--muted);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: .93rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: filter .15s, transform .12s;
+      border: none;
+    }
+
+    .btn:active { transform: scale(.97); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      color: #fff;
+    }
+
+    .btn-primary:hover { filter: brightness(1.12); }
+
+    .btn-secondary {
+      background: rgba(52,211,153,.12);
+      color: var(--green);
+      border: 1px solid rgba(52,211,153,.25);
+    }
+
+    .btn-secondary:hover { background: rgba(52,211,153,.2); }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .contact-strip p {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 14px;
+    }
+
+    .mail-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: .95rem;
+      border: 1px solid rgba(79,124,255,.3);
+      background: rgba(79,124,255,.08);
+      padding: 10px 22px;
+      border-radius: 10px;
+      transition: background .15s;
+    }
+
+    .mail-link:hover { background: rgba(79,124,255,.18); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 24px;
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    footer strong { color: var(--text); font-weight: 600; }
+    footer .sep { margin: 0 8px; opacity: .35; }
+
+    @media (max-width: 520px) {
+      main { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header>
+  <div class="eyebrow">Загрузка приложений</div>
+  <h1>Kitchen Stoves</h1>
+  <p>Приложение для управления кухонными плитами — доступно для Windows и Android.</p>
+</header>
+
+<!-- ── APP CARDS ── -->
+<main>
+
+  <!-- DESKTOP -->
+  <div class="card">
+    <div class="card-icon desktop">🖥️</div>
+    <div>
+      <div class="card-title">Windows-приложение</div>
+      <div class="card-desc" style="margin-top:6px;">
+        Десктопное приложение WPF для Windows. Распакуйте архив и запустите <code style="color:var(--accent2);font-family:'JetBrains Mono',monospace;font-size:.85em;">KitchenStovesWPF.exe</code>.
+      </div>
+    </div>
+    <div class="badge-row">
+      <span class="badge">Windows x64</span>
+      <span class="badge">.NET 8</span>
+      <span class="badge">WPF</span>
+      <span class="badge">~73 MB</span>
+    </div>
+
+    <a class="btn btn-primary" href="KitchenStovesWPF_win-x64.zip" download>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Скачать для Windows (.zip)
+    </a>
+
+    <div class="qr-block">
+      <div class="qr-wrap" id="qr-desktop"></div>
+      <span class="qr-label">QR для скачивания</span>
+    </div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="card">
+    <div class="card-icon mobile">📱</div>
+    <div>
+      <div class="card-title">Android-приложение</div>
+      <div class="card-desc" style="margin-top:6px;">
+        APK-файл для установки на Android. Перед установкой разрешите <em>«Установку из неизвестных источников»</em> в настройках устройства.
+      </div>
+    </div>
+    <div class="badge-row">
+      <span class="badge">Android</span>
+      <span class="badge">APK</span>
+      <span class="badge">~6.6 MB</span>
+      <span class="badge">Debug build</span>
+    </div>
+
+    <a class="btn btn-secondary" href="KitchenStoves.apk" download>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Скачать для Android (.apk)
+    </a>
+
+    <div class="qr-block">
+      <div class="qr-wrap" id="qr-mobile"></div>
+      <span class="qr-label">QR для скачивания</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── CONTACT ── -->
+<div class="contact-strip">
+  <p>Есть вопросы? Напишите автору напрямую.</p>
+  <a class="mail-link" href="mailto:dansolovyov08@yandex.ru">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    dansolovyov08@yandex.ru
+  </a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>Автор: <strong>Соловьёв Даниил Янович</strong><span class="sep">·</span><strong>ИС-941</strong></div>
+  <div style="margin-top:4px;">Неофициальный сайт загрузки.<span class="sep">·</span>Все права защищены.</div>
+</footer>
+
+<script>
+  // Определяем базовый URL страницы для QR-кодов
+  const base = (location.href.endsWith('/') ? location.href : location.href.replace(/\/[^\/]*$/, '/'));
+
+  new QRCode(document.getElementById('qr-desktop'), {
+    text: base + 'KitchenStovesWPF_win-x64.zip',
+    width: 148,
+    height: 148,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
+  new QRCode(document.getElementById('qr-mobile'), {
+    text: base + 'KitchenStoves.apk',
+    width: 148,
+    height: 148,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+</script>
+</body>
+</html>
